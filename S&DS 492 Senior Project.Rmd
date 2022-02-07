@@ -1,0 +1,14 @@
+---
+title: "S&DS 492 Senior Project"
+author: "Jorge Jeronimo Fueyo Gonzalez"
+date: "2/7/2022"
+output: pdf_document
+---
+
+# S&DS 492 Senior Project: Factors of Violence in Mexico and its Effect in the Economy
+
+```{r test}
+# test
+
+print("Hello World")
+```
