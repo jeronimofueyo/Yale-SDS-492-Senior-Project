@@ -12,3 +12,35 @@ output: pdf_document
 
 print("Hello World")
 ```
+
+```{r install}
+# install packages
+install.packages("readxl")
+```
+
+```{r load}
+# load packages
+library("readxl")
+```
+
+```{r data}
+# load data
+
+df_GDP_PC <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/PCAGDPMXA646NWDB.csv")
+
+df_GDP <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/MKTGDPMXA646NWDB.csv")
+
+df_DFI <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/BPFADI03MXQ637N.csv")
+
+#df_homicides <- read_excel("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/INEGI_exporta_10_2_2022_13_0_2.xls")
+
+```
+
+```{r data2}
+# view data
+
+head(df_GDP_PC)
+head(df_GDP)
+head(df_DFI)
+#head(df_homicides)
+```
