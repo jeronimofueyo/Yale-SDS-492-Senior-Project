@@ -15,15 +15,18 @@ print("Hello World")
 
 ```{r install}
 # install packages
-install.packages("readxl")
+#install.packages("readxl")
+#install.packages("tidyverse")
 ```
 
 ```{r load}
 # load packages
-library("readxl")
+#library("readxl")
+#library("tidyverse")
+#library("dplyr")
 ```
 
-```{r data}
+```{r data_load}
 # load data
 
 df_GDP_PC <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/PCAGDPMXA646NWDB.csv")
@@ -32,15 +35,51 @@ df_GDP <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SD
 
 df_DFI <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/BPFADI03MXQ637N.csv")
 
-#df_homicides <- read_excel("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/INEGI_exporta_10_2_2022_13_0_2.xls")
+df_homicides <- read.csv("INEGI_exporta_10_2_2022_13_0_2.csv")
 
 ```
 
-```{r data2}
+```{r data_view}
 # view data
 
 head(df_GDP_PC)
 head(df_GDP)
 head(df_DFI)
-#head(df_homicides)
+head(df_homicides)
+
+View(df_GDP_PC)
+View(df_GDP)
+View(df_DFI)
+View(df_homicides)
 ```
+
+```{r}
+colnames(df_GDP_PC)[2] <- "GDP_PC"
+years <- seq(from = 1960, to = 2020, by = 1)
+df_GDP_PC["YEARS"] <- years
+```
+
+```{r}
+colnames(df_GDP)[2] <- "GDP"
+years <- seq(from = 1960, to = 2020, by = 1)
+df_GDP["YEARS"] <- years
+```
+
+```{r}
+colnames(df_homicides) <- (df_homicides[5,])
+colnames(df_homicides)[1] <- "Year"
+df_homicides1 <- df_homicides[6:36,]
+select(df_homicides1, !c("NA"))
+#df_homicides1 %>%
+    # mutate(Extranjero=replace(Extranjero, cyl==4, NA)) %>%
+    # as.data.frame()
+```
+
+```{r}
+View(df_homicides1)
+```
+
+```{r}
+
+```
+
