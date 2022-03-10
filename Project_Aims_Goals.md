@@ -36,10 +36,12 @@ For each major topic, these will be the questions the project will try to answer
 2. What's the relationship between the political party in power in a region (state) with the level of violence in that region?
 
   - Data set would have to be made by me based on information online
+  - Try to find time series data set
 
 3. What's the relationship between the drug cartel in power in a region (state) with level of violence in that region?
 
   - Data set would have to be made by me based on information online
+  - Try to find time series data set
 
 4. Is there a pattern between both, the political party and drug cartel in power in a region (state) and their trends on violence?
 
