@@ -10,11 +10,11 @@ output: html_document
 ## Advisor: Professor Meyers
 ### Spring 2022
 
-## Project Aims and Goals
+## Senior Project
 
-Here is a list of questions that I want my project to answer. This will serve as a kind of brainstorm for what questions could be answered by my project, which data sets I might need to answer them, and if these questions, aims, or goals are feasible or unfeasible.
 
-This project will aim to address three major topics:
+
+Three major topics:
 
 1. Factors that Contribute to Violence in Mexico
 
@@ -23,10 +23,35 @@ This project will aim to address three major topics:
 3. Economic Phenomenon of Collusion: Why do Cartels Collude and Cheat on Each Other?
 
 
-For each major topic, these will be the questions the project will try to answer:
+```{r install}
+# install packages
+#install.packages("readxl")
+#install.packages("tidyverse")
+```
+
+```{r load}
+# load packages
+library("readxl")
+library("tidyverse")
+library("dplyr")
+```
 
 
 #### Factors that Contribute to Violence in Mexico
+
+```{r violence_data_load}
+# load violence data
+
+df_homicides <- read.csv("INEGI_exporta_10_2_2022_13_0_2.csv")
+
+```
+
+```{r violence_data_view}
+# view violence data
+
+head(df_homicides)
+View(df_homicides)
+```
 
 1. How does level of education affects level of violence in a specific region (state)?
 
@@ -54,6 +79,86 @@ For each major topic, these will be the questions the project will try to answer
 
 
 #### Effects of Violence on the Economic Development of Mexico
+
+
+```{r economic_data_load}
+# load economic data
+
+df_GDP_PC <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/PCAGDPMXA646NWDB.csv")
+
+df_GDP <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/MKTGDPMXA646NWDB.csv")
+
+df_DFI <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/BPFADI03MXQ637N.csv")
+
+```
+
+```{r economic_data_view}
+# view economic data
+
+head(df_GDP_PC)
+head(df_GDP)
+head(df_DFI)
+
+View(df_GDP_PC)
+View(df_GDP)
+View(df_DFI)
+```
+
+```{r}
+colnames(df_GDP_PC)[2] <- "GDP_PC"
+years <- seq(from = 1960, to = 2020, by = 1)
+df_GDP_PC["YEARS"] <- years
+```
+
+```{r}
+colnames(df_GDP)[2] <- "GDP"
+years <- seq(from = 1960, to = 2020, by = 1)
+df_GDP["YEARS"] <- years
+```
+
+```{r}
+colnames(df_DFI)[2] <- "DFI"
+
+years_DFI <- c()
+year <- 1980
+for(i in 1980:2016){
+  years_DFI <- c(years_DFI, year, year, year, year)
+  year <- year + 1
+}
+df_DFI["YEARS"] <- years_DFI
+```
+
+```{r}
+colnames(df_homicides) <- (df_homicides[5,])
+colnames(df_homicides)[1] <- "Year"
+df_homicides1 <- df_homicides[6:36,]
+select(df_homicides1, !c("NA"))
+#df_homicides1 %>%
+    # mutate(Extranjero=replace(Extranjero, cyl==4, NA)) %>%
+    # as.data.frame()
+```
+
+```{r}
+homicides <- df_homicides1["Total"]
+GDP <- df_GDP["GDP"]
+GDP_PC <- df_GDP_PC["GDP_PC"]
+DFI <- df_DFI["DFI"]
+
+GDP_1990 <- GDP[31:61,]
+GDP_PC_1990 <- GDP_PC[31:61,]
+#DFI <- df_DFI["DFI"]
+
+years_1990 <- seq(from = 1990, to = 2020, by = 1)
+
+df_violence_econ <- data.frame(years_1990, homicides, GDP_1990, GDP_PC_1990)
+```
+
+
+``` {r}
+ggplot(df_violence_econ, aes(x=Total, y=GDP_1990)) +
+  geom_point() +
+  geom_smooth(method="lm")
+```
 
 1. What's the effect of violence (homicides/crime rates) on economic development in the country as a whole?
   

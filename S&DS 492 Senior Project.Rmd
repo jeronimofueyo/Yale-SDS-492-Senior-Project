@@ -51,8 +51,6 @@ View(df_GDP_PC)
 View(df_GDP)
 View(df_DFI)
 View(df_homicides)
-
-#test commit
 ```
 
 ```{r}

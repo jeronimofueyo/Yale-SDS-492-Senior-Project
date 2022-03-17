@@ -72,7 +72,3 @@ For each major topic, these will be the questions the project will try to answer
 In Microeconomics, we see that firms have an incentive to collude and sometimes cheat on each other. This seldom happens in regulated markets. The drug market through which these criminal groups operate is illegal, which makes it unregulated. Drug cartels are incentivized to collude and form aliances, but sometimes also cheat on each other and create war, which results in more violence. In this part of the project, I aim to discuss this phenomenon and how it has affected levels of violence in the country.
 
 - I see it hard to find a way to use data to support this discussion so I don't think I'll be using data here
-
-
-
-test commit

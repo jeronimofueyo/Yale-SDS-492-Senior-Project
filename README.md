@@ -9,5 +9,3 @@ In this project, I aim to answer a series of questions regarding factors that af
 More information on the specific questions and the data sets used to answer the questions can be found in the Project_Aims_Goals.md file in this project.
 
 I hope you find these findings useful and feel free to reach out to me through the following email for any questions you may have: `jeronimofueyo@gmail.com`
-
-Test commit
