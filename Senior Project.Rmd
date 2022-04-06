@@ -42,16 +42,11 @@ library("dplyr")
 ```{r violence_data_load}
 # load violence data
 
-df_homicides <- read.csv("INEGI_exporta_10_2_2022_13_0_2.csv")
+df_homicides_0 <- read.csv("INEGI_exporta_10_2_2022_13_0_2.csv")
 
 ```
 
-```{r violence_data_view}
-# view violence data
 
-head(df_homicides)
-View(df_homicides)
-```
 
 1. How does level of education affects level of violence in a specific region (state)?
 
@@ -84,81 +79,219 @@ View(df_homicides)
 ```{r economic_data_load}
 # load economic data
 
-df_GDP_PC <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/PCAGDPMXA646NWDB.csv")
+df_GDP_PC_0 <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/PCAGDPMXA646NWDB.csv")
 
-df_GDP <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/MKTGDPMXA646NWDB.csv")
+df_GDP_0 <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/MKTGDPMXA646NWDB.csv")
 
-df_DFI <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/BPFADI03MXQ637N.csv")
+df_FDI_0 <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/GitHub/Yale-SDS-492-Senior-Project/BPFADI03MXQ637N.csv")
 
+```
+
+
+```{r}
+df_GDP_PC <- df_GDP_PC_0 %>%
+  rename(date = DATE, GDP_PC = PCAGDPMXA646NWDB) %>%
+  mutate(date = as.Date(date), year = as.numeric(format(date, format="%Y")))
+
+df_GDP <- df_GDP_0 %>%
+  rename(date = DATE, GDP = MKTGDPMXA646NWDB) %>%
+  mutate(date = as.Date(date), year = as.numeric(format(date, format="%Y")))
+
+df_FDI <- df_FDI_0 %>%
+  rename(date = DATE, FDI = BPFADI03MXQ637N) %>%
+  mutate(date = as.Date(date), year = as.numeric(format(date, format="%Y")))
+
+df_FDI_per_year <- df_FDI %>%
+  group_by(year) %>%
+  summarize(FDI = mean(FDI))
+```
+
+
+```{r economic_data_head}
+# head economic data
+
+head(df_GDP_PC)
+head(df_GDP)
+head(df_FDI)
+head(df_FDI_per_year)
 ```
 
 ```{r economic_data_view}
 # view economic data
 
-head(df_GDP_PC)
-head(df_GDP)
-head(df_DFI)
-
 View(df_GDP_PC)
 View(df_GDP)
-View(df_DFI)
+View(df_FDI)
+View(df_FDI_per_year)
+```
+
+
+```{r}
+df_homicides <- df_homicides_0[6:36,] %>%
+  select(!X.35) %>%
+  rename(year = Defunciones.por.homicidios, total_homicides = X,
+         Aguascalientes_homicides = X.1, BajaCalifornia_homicides = X.2,
+         BajaCaliforniaSur_homicides = X.3, Campeche = X.4,
+         Coahuila = X.5, Colima = X.6,
+         Chiapas = X.7, Chihuahua = X.8,
+         CDMX = X.9, Durango = X.10,
+         Guanajuato = X.11, Guerrero = X.12,
+         Hidalgo = X.13, Jalisco = X.14,
+         Mexico = X.15, Michoacan = X.16,
+         Morelos = X.17, Nayarit = X.18,
+         NuevoLeon = X.19, Oaxaca = X.20,
+         Puebla = X.21, Queretaro = X.22,
+         QuintanaRoo = X.23, SanLuisPotosi = X.24,
+         Sinaloa = X.25, Sonora = X.26,
+         Tabasco = X.27, Tamaulipas = X.28,
+         Tlaxcala = X.29, Veracruz = X.30,
+         Yucatan = X.31, Zacatecas = X.32,
+         Extranjero = X.33, NotIdentified = X.34) %>%
+  mutate(year = as.numeric(year),
+         total_homicides = as.numeric(gsub(",", "", total_homicides)),
+         Aguascalientes_homicides = as.numeric(gsub(",", "", Aguascalientes_homicides)),
+         BajaCalifornia_homicides = as.numeric(gsub(",", "", BajaCalifornia_homicides)),
+         BajaCaliforniaSur_homicides = as.numeric(gsub(",", "", BajaCaliforniaSur_homicides)),
+         Campeche = as.numeric(gsub(",", "", Campeche)),
+         Coahuila = as.numeric(gsub(",", "", Coahuila)),
+         Colima = as.numeric(gsub(",", "", Colima)),
+         Chiapas = as.numeric(gsub(",", "", Chiapas)),
+         Chihuahua = as.numeric(gsub(",", "", Chihuahua)),
+         CDMX = as.numeric(gsub(",", "", CDMX)),
+         Durango = as.numeric(gsub(",", "", Durango)),
+         Guanajuato = as.numeric(gsub(",", "", Guanajuato)),
+         Guerrero = as.numeric(gsub(",", "", Guerrero)),
+         Hidalgo = as.numeric(gsub(",", "", Hidalgo)),
+         Jalisco = as.numeric(gsub(",", "", Jalisco)),
+         Mexico = as.numeric(gsub(",", "", Mexico)),
+         Michoacan = as.numeric(gsub(",", "", Michoacan)),
+         Morelos = as.numeric(gsub(",", "", Morelos)),
+         Nayarit = as.numeric(gsub(",", "", Nayarit)),
+         NuevoLeon = as.numeric(gsub(",", "", NuevoLeon)),
+         Oaxaca = as.numeric(gsub(",", "", Oaxaca)),
+         Puebla = as.numeric(gsub(",", "", Puebla)),
+         Queretaro = as.numeric(gsub(",", "", Queretaro)),
+         QuintanaRoo = as.numeric(gsub(",", "", QuintanaRoo)),
+         SanLuisPotosi = as.numeric(gsub(",", "", SanLuisPotosi)),
+         Sinaloa = as.numeric(gsub(",", "", Sinaloa)),
+         Sonora = as.numeric(gsub(",", "", Sonora)),
+         Tabasco = as.numeric(gsub(",", "", Tabasco)),
+         Tamaulipas = as.numeric(gsub(",", "", Tamaulipas)),
+         Tlaxcala = as.numeric(gsub(",", "", Tlaxcala)),
+         Veracruz = as.numeric(gsub(",", "", Veracruz)),
+         Yucatan = as.numeric(gsub(",", "", Yucatan)),
+         Zacatecas = as.numeric(gsub(",", "", Zacatecas)),
+         Extranjero = as.numeric(gsub(",", "", Extranjero)),
+         NotIdentified = as.numeric(gsub(",", "", NotIdentified))) %>%
+  replace(is.na(.), 0)
+```
+
+
+```{r homicides_data_head}
+# head homicides data
+
+head(df_homicides)
+```
+
+```{r homicides_data_view}
+# view homicides data
+
+View(df_homicides)
 ```
 
 ```{r}
-colnames(df_GDP_PC)[2] <- "GDP_PC"
-years <- seq(from = 1960, to = 2020, by = 1)
-df_GDP_PC["YEARS"] <- years
+df_violence_econ <- df_homicides %>%
+  left_join(df_GDP, by="year") %>%
+  left_join(df_GDP_PC, by="year") %>%
+  left_join(df_FDI_per_year, by="year") %>%
+  select(year, total_homicides, GDP, GDP_PC, FDI) %>%
+  mutate(years_since_1989 = year - 1989)
+
+head(df_violence_econ)
 ```
 
-```{r}
-colnames(df_GDP)[2] <- "GDP"
-years <- seq(from = 1960, to = 2020, by = 1)
-df_GDP["YEARS"] <- years
+
+
+``` {r}
+ggplot(df_violence_econ, aes(x=total_homicides, y=GDP, color=year)) +
+  geom_point() +
+  geom_smooth(method="lm")
 ```
 
-```{r}
-colnames(df_DFI)[2] <- "DFI"
-
-years_DFI <- c()
-year <- 1980
-for(i in 1980:2016){
-  years_DFI <- c(years_DFI, year, year, year, year)
-  year <- year + 1
-}
-df_DFI["YEARS"] <- years_DFI
+``` {r}
+ggplot(df_violence_econ, aes(x=total_homicides, y=GDP_PC, color=year)) +
+  geom_point() +
+  geom_smooth(method="lm")
 ```
 
-```{r}
-colnames(df_homicides) <- (df_homicides[5,])
-colnames(df_homicides)[1] <- "Year"
-df_homicides1 <- df_homicides[6:36,]
-select(df_homicides1, !c("NA"))
-#df_homicides1 %>%
-    # mutate(Extranjero=replace(Extranjero, cyl==4, NA)) %>%
-    # as.data.frame()
-```
-
-```{r}
-homicides <- df_homicides1["Total"]
-GDP <- df_GDP["GDP"]
-GDP_PC <- df_GDP_PC["GDP_PC"]
-DFI <- df_DFI["DFI"]
-
-GDP_1990 <- GDP[31:61,]
-GDP_PC_1990 <- GDP_PC[31:61,]
-#DFI <- df_DFI["DFI"]
-
-years_1990 <- seq(from = 1990, to = 2020, by = 1)
-
-df_violence_econ <- data.frame(years_1990, homicides, GDP_1990, GDP_PC_1990)
+``` {r}
+ggplot(df_violence_econ, aes(x=total_homicides, y=FDI, color=year)) +
+  geom_point() +
+  geom_smooth(method="lm")
 ```
 
 
 ``` {r}
-ggplot(df_violence_econ, aes(x=Total, y=GDP_1990)) +
+ggplot(df_violence_econ, aes(x=year, y=GDP)) +
+  geom_point() +
+  geom_line() +
+  geom_smooth(method="lm")
+```
+
+``` {r}
+ggplot(df_violence_econ, aes(x=year, y=total_homicides)) +
+  geom_point() +
+  geom_line()
+```
+
+``` {r}
+fit_1 <- lm(total_homicides ~ years_since_1989 + GDP, df_violence_econ)
+summary(fit_1)
+```
+
+``` {r}
+fit_2 <- lm(total_homicides ~ years_since_1989 + GDP_PC, df_violence_econ)
+summary(fit_2)
+```
+
+
+``` {r}
+fit_3 <- lm(total_homicides ~ years_since_1989 + FDI, df_violence_econ)
+summary(fit_3)
+```
+
+``` {r}
+fit_3 <- lm(total_homicides ~ years_since_1989 + GDP_PC + FDI, df_violence_econ)
+summary(fit_3)
+```
+
+
+```{r}
+fit_4 <- lm(FDI ~ years_since_1989 + total_homicides, df_violence_econ)
+summary(fit_4)
+```
+
+
+```{r}
+df_violence_econ_not_90s <- df_violence_econ %>%
+  mutate(years_since_1999 = year - 1999) %>%
+  filter(year >= 2000)
+head(df_violence_econ_not_90s)
+```
+
+``` {r}
+ggplot(df_violence_econ_not_90s, aes(x=total_homicides, y=GDP_PC, color=year)) +
   geom_point() +
   geom_smooth(method="lm")
 ```
+
+
+```{r}
+fit_5 <- lm(total_homicides ~ years_since_1999 + GDP_PC, df_violence_econ_not_90s)
+summary(fit_5)
+```
+
+
 
 1. What's the effect of violence (homicides/crime rates) on economic development in the country as a whole?
   
@@ -186,5 +319,3 @@ In Microeconomics, we see that firms have an incentive to collude and sometimes 
 - I see it hard to find a way to use data to support this discussion so I don't think I'll be using data here
 
 
-
-test commit
