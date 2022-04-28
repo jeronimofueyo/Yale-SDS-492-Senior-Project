@@ -2,7 +2,9 @@
 title: "Senior Project"
 author: "Jorge Jeronimo Fueyo Gonzalez"
 date: "3/10/2022"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # S&DS Senior Project (S&DS 492)
@@ -11,6 +13,14 @@ output: html_document
 ### Spring 2022
 
 ## Senior Project
+
+
+
+
+
+
+
+
 
 
 
@@ -35,6 +45,112 @@ library("readxl")
 library("tidyverse")
 library("dplyr")
 ```
+
+
+```{r violence_data_load}
+# load data
+
+df1 <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/RStudio/Yale-SDS-492-Senior-Project/21-04-22 10_51_42_theglobaleconomy.csv")
+df2 <- read.csv("/Users/jeronimofueyo/Documents/Jeronimo Fueyo/RStudio/Yale-SDS-492-Senior-Project/21-04-22 11_13_01_theglobaleconomy.csv")
+
+```
+
+```{r}
+View(df1)
+View(df2)
+```
+
+
+```{r}
+df3 <- df1 %>%
+  left_join(df2, by="Year") %>%
+  rename(year = Year, gini = Gini.income.inequality.index, poverty_percent = Poverty.percent.of.population,
+         education_spending = Public.spending.on.education.percent.of.public.spending, literacy_rate = Literacy.rate,
+         secondary_school_enrolment = Secondary.school.enrollment.percent.of.all.eligible.children,
+         tertiary_school_enrolment = Tertiary.school.enrollment.percent.of.all.eligible.children,
+         globalization = Globalization.index..0.100., econ_globalization = Economic.globalization.index..0.100.,
+         GDP_prcnt_wrld = Percent.of.world.GDP, FDI_prcnt_wrld = Percent.of.world.Foreign.Direct.Investment,
+         savings_bUSD = Savings.billion.USD, intl_tourism_rev = International.tourism.revenue,
+         kidnappings_per_100K = Kidnappings.per.100000.people, robberies_per_100K = Robberies.per.100000.people,
+         prisoners_per_100K = Number.of.prisoners.per.100000.people, thefts_per_100K = Thefts.per.100000.people,
+         homicides_per_100K = Homicides.per.100000.people,
+         military_spending_bUSD = Military.spending.in.billion.U.S..dollars,
+         cost_of_living = Cost.of.living.index.world.average...100,
+         education_price = Education.service.price.index.world.average...100,
+         GDP_change_rate = Economic.growth..the.rate.of.change.of.real.GDP,
+         GDP_bUSD = Gross.Domestic.Product.billions.of.U.S..dollars, GDP_PC = GDP.per.capita.current.U.S..dollars,
+         GDP_PC_PPP = GDP.per.capita.Purchasing.Power.Parity, capital_investment = Capital.investment.billion.USD,
+         inlfation = Inflation..percent.change.in.the.Consumer.Price.Index, labor_force = Labor.force.million.people,
+         unemployment_rate = Unemployment.rate, trade = Terms.of.trade.base.year...2000,
+         gvt_spending = Government.spending.billion.USD, gvt_debt = Government.debt.as.percent.of.GDP,
+         rule_of_law = Rule.of.law.index...2.5.weak..2.5.strong.,
+         corruption_control = Control.of.corruption...2.5.weak..2.5.strong.,
+         corruption_perception = Corruption.Perceptions.Index.100...no.corruption,
+         competitiveness = Competitiveness...World.Economic.Forum.index..0.100.,
+         cost_start_business = Cost.of.starting.a.business...of.income.per.capita,
+         shadow_economy_pct_GDP = Shadow.economy.percent.of.GDP, population_M = Population.size.in.millions,
+         migrant_pop_pct = Migrant.population.percent.of.total.population,
+         health_spending_PC = Health.spending.per.capita) %>%
+  select(year, gini, education_spending, literacy_rate, secondary_school_enrolment, tertiary_school_enrolment,
+         globalization, econ_globalization, GDP_prcnt_wrld, FDI_prcnt_wrld, savings_bUSD, intl_tourism_rev,
+         kidnappings_per_100K, robberies_per_100K, prisoners_per_100K, thefts_per_100K, homicides_per_100K,
+         military_spending_bUSD, GDP_change_rate, GDP_bUSD, GDP_PC, GDP_PC_PPP, capital_investment, inlfation,
+         labor_force, unemployment_rate, trade, gvt_spending, gvt_debt, rule_of_law, corruption_control,
+         corruption_perception, cost_start_business, shadow_economy_pct_GDP, population_M, health_spending_PC) %>%
+  mutate(FDI_prcnt_wrld_lag = lag(FDI_prcnt_wrld, n=1), intl_tourism_rev_lag = lag(intl_tourism_rev, n=1),
+         military_spending_bUSD_lag = lag(military_spending_bUSD, n=1), gvt_spending_lag = lag(gvt_spending, n=1))
+  
+  
+```
+
+```{r}
+View(df3)
+```
+
+```{r}
+head(df3)
+```
+
+
+```{r}
+fit1 <- lm(homicides_per_100K ~ unemployment_rate, df3)
+summary(fit1)
+```
+
+
+```{r}
+fit2 <- lm(homicides_per_100K ~ literacy_rate, df3)
+summary(fit2)
+```
+
+```{r}
+fit3 <- lm(homicides_per_100K ~ unemployment_rate + education_spending, df3)
+summary(fit3)
+```
+
+
+```{r}
+fit4 <- lm(intl_tourism_rev_lag ~ homicides_per_100K, df3)
+summary(fit4)
+```
+
+```{r}
+fit5 <- lm((prisoners_per_100K/homicides_per_100K) ~ corruption_perception, df3)
+summary(fit5)
+```
+
+```{r}
+fit6 <- lm(GDP_PC ~ homicides_per_100K + unemployment_rate + FDI_prcnt_wrld + trade, df3)
+summary(fit6)
+```
+
+
+```{r}
+ggplot(df3, aes(x=homicides_per_100K, y=military_spending_bUSD, color=year)) +
+  geom_point() +
+  geom_smooth(method="lm")
+```
+
 
 
 #### Factors that Contribute to Violence in Mexico
@@ -291,6 +407,11 @@ fit_5 <- lm(total_homicides ~ years_since_1999 + GDP_PC, df_violence_econ_not_90
 summary(fit_5)
 ```
 
+
+```{r}
+fit_6 <- lm(total_homicides ~ years_since_1989 + GDP_PC + FDI + GDP_PC*FDI, df_violence_econ)
+summary(fit_6)
+```
 
 
 1. What's the effect of violence (homicides/crime rates) on economic development in the country as a whole?

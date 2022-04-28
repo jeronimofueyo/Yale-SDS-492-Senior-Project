@@ -1,0 +1,240 @@
+Indicator: 	Economic growth: the rate of change of real GDP
+
+Measure: 	percent
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Annual percentage growth rate of GDP at market prices based on constant local currency. Aggregates are based on constant 2010 U.S. dollars. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources.
+
+------------------------------------------
+
+Indicator: 	GDP per capita, Purchasing Power Parity
+
+Measure: 	U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	GDP per capita based on purchasing power parity (PPP). PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP at purchaser's prices is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2011 international dollars.
+
+------------------------------------------
+
+Indicator: 	Gross Domestic Product, billions of U.S. dollars
+
+Measure: 	billion U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	GDP at purchaser's prices is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars. Dollar figures for GDP are converted from domestic currencies using single year official exchange rates. For a few countries where the official exchange rate does not reflect the rate effectively applied to actual foreign exchange transactions, an alternative conversion factor is used.
+
+------------------------------------------
+
+Indicator: 	Inflation: percent change in the Consumer Price Index
+
+Measure: 	percent
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Inflation as measured by the consumer price index reflects the annual percentage change in the cost to the average consumer of acquiring a basket of goods and services that may be fixed or changed at specified intervals, such as yearly. The Laspeyres formula is generally used.
+
+------------------------------------------
+
+Indicator: 	Government debt as percent of GDP
+
+Measure: 	percent
+
+Source: 	
+
+Currencies: 	
+
+Definition: 	Debt is the entire stock of direct government fixed-term contractual obligations to others outstanding on a particular date. It includes domestic and foreign liabilities such as currency and money deposits, securities other than shares, and loans. It is the gross amount of government liabilities reduced by the amount of equity and financial derivatives held by the government. Because debt is a stock rather than a flow, it is measured as of a given date, usually the last day of the fiscal year.
+
+------------------------------------------
+
+Indicator: 	Unemployment rate
+
+Measure: 	percent
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Unemployment refers to the share of the labor force that is without work but available for and seeking employment.
+
+------------------------------------------
+
+Indicator: 	Population size, in millions
+
+Measure: 	million
+
+Source: 	United Nations Population Division
+
+Currencies: 	
+
+Definition: 	Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.
+
+------------------------------------------
+
+Indicator: 	Health spending per capita
+
+Measure: 	U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Current expenditures on health per capita in current US dollars. Estimates of current health expenditures include healthcare goods and services consumed during each year.
+
+------------------------------------------
+
+Indicator: 	Corruption Perceptions Index, 100 = no corruption
+
+Measure: 	points
+
+Source: 	Transparency International
+
+Currencies: 	
+
+Definition: 	The Corruption Perceptions Index is an indicator of perceptions of public sector corruption, i.e. administrative and political corruption. The indicator values are determined by using information from surveys and assessments of corruption, collected by a variety of reputable institutions.
+
+------------------------------------------
+
+Indicator: 	Terms of trade, base year = 2000
+
+Measure: 	percent
+
+Source: 	The United Nations
+
+Currencies: 	
+
+Definition: 	Net barter terms of trade index is calculated as the percentage ratio of the export unit value indexes to the import unit value indexes, measured relative to the base year 2000. Unit value indexes are based on data reported by countries that demonstrate consistency under UNCTAD quality controls, supplemented by UNCTAD's estimates using the previous year’s trade values at the Standard International Trade Classification three-digit level as weights. To improve data coverage, especially for the latest periods, UNCTAD constructs a set of average prices indexes at the three-digit product classification of the Standard International Trade Classification revision 3 using UNCTAD’s Commodity Price Statistics, interna­tional and national sources, and UNCTAD secretariat estimates and calculates unit value indexes at the country level using the current year's trade values as weights.
+
+------------------------------------------
+
+Indicator: 	Cost of starting a business, % of income per capita
+
+Measure: 	percent of per capita GNI
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	The indicator includes all official fees and fees for legal or professional services if such services are required by law. The company law, the commercial code, and specific regulations and fee schedules are used as sources for calculating costs. The indicator excludes bribes.
+
+------------------------------------------
+
+Indicator: 	Capital investment, billion USD
+
+Measure: 	billion U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Gross capital formation (formerly gross domestic investment) consists of outlays on additions to the fixed assets of the economy plus net changes in the level of inventories. Fixed assets include land improvements (fences, ditches, drains, and so on); plant, machinery, and equipment purchases; and the construction of roads, railways, and the like, including schools, offices, hospitals, private residential dwellings, and commercial and industrial buildings. Inventories are stocks of goods held by firms to meet temporary or unexpected fluctuations in production or sales, and "work in progress." According to the 1993 SNA, net acquisitions of valuables are also considered capital formation. Data are in current U.S. dollars.
+
+------------------------------------------
+
+Indicator: 	Government spending, billion USD
+
+Measure: 	billion U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	General government final consumption expenditure (formerly general government consumption) includes all government current expenditures for purchases of goods and services (including compensation of employees). It also includes most expenditures on national defense and security, but excludes government military expenditures that are part of government capital formation. Data are in current U.S. dollars.
+
+------------------------------------------
+
+Indicator: 	GDP per capita, current U.S. dollars
+
+Measure: 	U.S. dollars
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	GDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars.
+
+------------------------------------------
+
+Indicator: 	Labor force, million people
+
+Measure: 	million people
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	Labor force comprises people ages 15 and older who supply labor for the production of goods and services during a specified period. It includes people who are currently employed and people who are unemployed but seeking work as well as first-time job-seekers. Not everyone who works is included, however. Unpaid workers, family workers, and students are often omitted, and some countries do not count members of the armed forces. Labor force size tends to vary during the year as seasonal workers enter and leave.
+
+------------------------------------------
+
+Indicator: 	Rule of law index (-2.5 weak; 2.5 strong)
+
+Measure: 	points
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	The index for Rule of Law captures perceptions of the extent to which agents have confidence in and abide by the rules of society, and in particular the quality of contract enforcement, property rights, the police, and the courts, as well as the likelihood of crime and violence.
+
+------------------------------------------
+
+Indicator: 	Control of corruption (-2.5 weak; 2.5 strong)
+
+Measure: 	points
+
+Source: 	The World Bank
+
+Currencies: 	
+
+Definition: 	The index for Control of Corruption captures perceptions of the extent to which public power is exercised for private gain, including both petty and grand forms of corruption, as well as capture of the state by elites and private interests.
+
+------------------------------------------
+
+Indicator: 	Shadow economy, percent of GDP
+
+Measure: 	percent
+
+Source: 	Medina and Schneider (2018)
+
+Currencies: 	
+
+Definition: 	The shadow economy as percent of total annual GDP. Detailed methodology of the estimations can be obtained from the following International Monetary Fund working paper by Leandro Medina and Friedrich Schneider (2018): Shadow Economies Around the World: What Did We Learn Over the Last 20 Years?
+
+------------------------------------------
+
+Indicator: 	Competitiveness - World Economic Forum index (0-100)
+
+Measure: 	points
+
+Source: 	The World Economic Forum
+
+Currencies: 	
+
+Definition: 	The Global Competitiveness index is composed of 12 pillars of competitiveness: Institutions, Infrastructure, ICT adoption, Macroeconomic stability, Health, Skills, Product market, Labor market, Financial system, market size, Business, dynamism, and Innovation capability. 
+
+------------------------------------------
+
+Indicator: 	Migrant population, percent of total population
+
+Measure: 	percent
+
+Source: 	United Nations Population Division
+
+Currencies: 	
+
+Definition: 	International migrant stock is the number of people born in a country other than that in which they live. It also includes refugees. The data used to estimate the international migrant stock at a particular time are obtained mainly from population censuses. The estimates are derived from the data on foreign-born population--people who have residence in one country but were born in another country. When data on the foreign-born population are not available, data on foreign population--that is, people who are citizens of a country other than the country in which they reside--are used as estimates. After the breakup of the Soviet Union in 1991 people living in one of the newly independent countries who were born in another were classified as international migrants. Estimates of migrant stock in the newly independent states from 1990 on are based on the 1989 census of the Soviet Union. For countries with information on the international migrant stock for at least two points in time, interpolation or extrapolation was used to estimate the international migrant stock on July 1 of the reference years. For countries with only one observation, estimates for the reference years were derived using rates of change in the migrant stock in the years preceding or following the single observation available. A model was used to estimate migrants for countries that had no data.
+
+------------------------------------------
+
